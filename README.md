@@ -1,91 +1,106 @@
-# NAI Pocket
+# NAI Pocket Endfield
 
-**手机上的 NovelAI 工作台。** 找画风、写 Prompt、排队生成、管理作品，一只手就够。
+基于 [MayRain-Meow / NAI-Pocket](https://github.com/MayRain-Meow/NAI-Pocket) 的独立修改版：Endfield 风格、日常交互修复，以及能把标签导入指定分区的 Danbooru 画廊。
 
-用你自己的 NovelAI Token，或你选择的第三方中转，在手机本地运行，不需要服务器。
+**[下载 0.7.10-endfield.5 安装包与完整源码](https://github.com/tanghuang-meow/NAI-Pocket/releases/tag/0.7.10-endfield.5)** · [原项目](https://github.com/MayRain-Meow/NAI-Pocket) · [上游 PR #3](https://github.com/MayRain-Meow/NAI-Pocket/pull/3) · [安装与构建](EXPERIENCE.md) · [画廊使用说明](DANBOORU.md)
 
-[![下载 APK](https://img.shields.io/badge/下载-Android%20APK-d6a774)](https://github.com/MayRain-Meow/NAI-Pocket/releases/tag/v0.7.0-preview) ![Android](https://img.shields.io/badge/Android-7.0%2B-7fbf95) ![Status](https://img.shields.io/badge/status-0.7.0%20preview-ab9cf0) [![License: AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-8a8a8a)](LICENSE)
+> 此仓库是个人分支，不是官方发布。上游作者尚未合并本 PR；喜欢原版或需要原项目后续更新，请优先关注原项目。
 
-## 不知道该用哪个画师？
+![画廊与标签导入预览，图片为合成测试图](docs/endfield/gallery-preview.png)
 
-NovelAI 认得上万个画师名，可光看名字，谁也不知道他画成什么样；例图散在各个网站，一个个去翻太慢。NAI Pocket 把这件事做成了手机上的一个页面：
+## 安装
 
-- **2.2 万+ 位画师的资料库**：其中约 2.1 万位有全年龄原作例图，可收藏、写笔记，一键加入画风。
-- **V5 例图**：1.2 万+ 位画师每人一张 NovelAI V5 生成图，同一个 Prompt 只换画师名，画风一眼对比；点开可看完整生成参数。
-- **按感觉找**：点「水彩」「梦幻」「厚涂」「漫画分格」等 63 个感觉词，画师按画风接近程度排出来。
-- **以图找画师**：选一张喜欢的图，找出画风最接近的画师。
-- **画风概览 / 找相似**：每位画师的画风指纹，以及画风最像的几位画师。
+版本 **0.7.10-endfield.5**，versionCode **37**。Android 7.0 及以上 ARM 手机。
+从本仓库 Releases 下载 `NAI-Pocket-0.7.10-endfield.5.apk`。
 
-<p align="center">
-<img src="docs/screenshots/demo-vibe.gif" width="260" alt="按感觉找：点水彩、梦幻，画师按画风接近程度排序">
-<img src="docs/screenshots/demo-image.gif" width="260" alt="以图找画师：选一张图，找到画风相近的画师">
-</p>
-<p align="center">
-<img src="docs/screenshots/style-overview.png" width="260" alt="画风概览：画风指纹与画风相近的画师">
-<img src="docs/screenshots/artist-detail.png" width="260" alt="画师资料：原作例图与画风">
-</p>
+- 已装此前 Endfield 独立版：直接覆盖安装，**不要先卸载**；包名和签名沿用。
+- 已装作者原版：可以并存，独立版使用自己的数据目录；不会自动迁移原版账号或图库。
+- 当前独立包统一使用 Endfield 主题；原作者界面保留在普通构建中。
+- 独立版关闭原项目的自动更新检查，请在本仓库查看新版本。
 
-画风比较用的是 CLIP 图像模型算出的画风向量（约 2.1 万位画师、5.6 万张全年龄原作，另有 1.2 万张 V5 例图；画风面板可选按原作、按 V5 出图或两者混合比较），比的是画面本身而不是标签，并尽量排除题材和角色设计的干扰，同一个角色的图，大大减少把「只是画过这个角色」的画师排到前面。全部在手机上离线计算，你选的图片不会上传。
+## 相对原版改了什么
 
-V5 例图、画风数据和以图找画师模型都是可选下载：设置 → V5 例图（约 540 MB）、设置 → 画风数据（约 63 MB）、设置 → 以图找画师（约 293 MB，一次）。
+### 界面与操作
 
-## 还能做什么
+- 可选 Endfield 风格：清爽纸白与墨色、细线、小切角按钮和独立图标；普通构建仍保留原作者界面，发布的独立包启用新主题。
+- 手机底栏为「编辑、法典、图库、队列、更多」，画师移入更多；修复队列入口和生成操作区落到屏幕外的问题。
+- 保留场景、镜头、画风、其他等类别色；Quality、Brownian、Variety+、原生透明有清楚的选中反馈。原生透明仍按原项目规则仅支持 V5。
+- 四套配色：明黄浅色、蓝紫深色（#0B0C10 / #636AFF）、蓝紫珊瑚浅色（#636AFF / #F08094）、玫红深色（#141414 / #E4397E）。
+- 轻量页面与按键动效，尊重减少动态效果设置；标签拖拽只在内容区上下边缘触发自动滚动。
 
-### 写 Prompt 不再对着一长串英文
-粘贴整段 Prompt，自动分成**场景 / 镜头 / 画风 / 其他**四栏。每个 Tag 是一块带中文释义的积木：点一下调权重，按住拖动排序，随时切回纯文本。多角色的站位在图上点选。
+### 图库、下载与队列
 
-<p align="center"><img src="docs/screenshots/demo-sort.gif" width="260" alt="粘贴一段 Prompt，自动分进场景、镜头、画风、其他四栏"></p>
+- 图库按创建时间从新到旧、从左到右按行排列，修复瀑布流造成的视觉时间错序。
+- 回收站可直接看缩略图、预览与原图，修复 Android「本机图片路由无效」；保留原有 24 小时生命周期。
+- 图片详情支持双指、双击、拖动和按钮缩放；放大时避免误触切换图片。
+- 记住元数据与下载位置偏好；支持相册、已授权文件夹或每次询问，以及批量下载、进度、取消和部分失败重试。
+- 失败队列支持单条删除和批量清理；保护进行中的任务以及关联图库／回收站图片的记录。
 
-### 和官网一样的生成参数
-Quality 质量词、UC 预设（Heavy / Light / Furry Focus / Human Focus）按官网的方式写进请求；V5 Full 可选更省额度的 **Medium**。从 NovelAI 图片（PNG / WebP / JPEG）还原参数时，按当时实际生效的设置还原。
+### 提示词与画师
 
-### 不知道某个画面怎么写
-**语义工作台**：用中文描述想要的画面（“雨夜霓虹街道”），找到对应的 Danbooru Tag，勾几个再点“联想”，看常和它们一起出现的 Tag、画风相近的画师。想让 Agent 把一个想法写成整段提示词，就切到 **问秋月**，写好的直接粘回来加进编辑器。
+- 标签多选、批量移动、批量删除和一步撤销；可跨场景、镜头、画风、其他、负面和角色区域操作。
+- 修复负面标签批量移出后底层文本未同步，以及后台画师索引刷新打断标签输入的问题。
+- 「找相似」重置残留名称、收藏和筛选条件，保留当前画风数据来源；没有擅自改写画师资料标签或相似度模型。
 
-### 找灵感
-**Storm**：同一个 Seed 一次出一批，只改画风里各画师的权重（或加一位风格相近 / 换口味的画师），一眼看出哪种配比好看，挑中的一组一键放回编辑器。**法典**里看图挑配方，长长的一栏可以拖右边的滑轨直接跳到中间；底栏的**反推**拿一张图认出 Tag，挑着加进编辑器；从图片里**还原**完整生成参数。
+### 新增 Danbooru 画廊
 
-### 生成与管理
-文生图、图生图、局部重绘、角色参考、Vibe Transfer 都在。任务进**后台队列**，可暂停、取消、重试；生成的图进入本机**图库**，搜索、收藏、一键恢复参数，并自动存一份到手机相册。常用设置存成**方案**，随时切换、导入导出。局部重绘的**框选高清修补**先圈出上下文再涂改，局部放大生成后贴回原图。
+- 底栏仍是「法典」，进入后默认打开左侧「画廊」，右侧切回法典；两页分别保留浏览状态。
+- 标签搜索、最新／高分／收藏数排序、日／周／月榜、内容分级和分页，默认全年龄。
+- 图片详情、缩放、来源链接和原图保存；标签按画师、作品、角色、通用、元信息分类勾选。
+- 可选择导入场景、镜头、画风、其他、负面或已有角色；默认追加并在目标区去重，替换需确认，导入可一次撤销。
+- 账号连接测试、内容黑名单、仅过滤输出标签、类别与格式偏好、超时及受限缓存；账号独立加密保存在 Android 本机。
+- 使用站点接口独立实现手机界面，不是完整网页内嵌；暂不包含多站点、账号收藏、随机抽取和 ComfyUI 工作流。
 
-### 官方账号或第三方中转
-可以同时保存多个 NovelAI 官方 Token；也可以在「管理第三方中转」里添加 RBQ，或其他与 NovelAI 生图接口兼容的中转，生成时随时切换。自定义中转优先使用 HTTPS；只提供 HTTP 时需在该中转中明确允许（会明文传输 Key、提示词和图片，请只用于你信任的服务与网络）。
+## 唐璜的碎碎念
 
-<p align="center">
-<img src="docs/screenshots/editor.png" width="200" alt="四栏 Tag 编辑">
-<img src="docs/screenshots/helpers.png" width="200" alt="辅助功能">
-<img src="docs/screenshots/codex.png" width="200" alt="法典">
-<img src="docs/screenshots/artists.png" width="200" alt="画师资料库">
-</p>
+原本只是想把界面改得清爽一点，结果一边用一边冒出新想法，就这样反复试了一天又一天。
+我没有亲手写代码，主要负责反复试用、复现问题、提出需求、选择视觉方案，以及一轮轮检查改动到底顺不顺手；
+具体实现和自动化检查由 **Yukino（Codex）** 协助完成。
 
-## 开始使用
+最初还开玩笑说“压榨了 Yukino 两个多小时”，后来发现只是开场：
+我的时间、耐心，还有给 Yukino 买 token 的 money，都陆续交代进去了……(´；ω；｀)
+代码不是我手敲的，但这些体验反馈和折腾过程，确实花了不少心思。
 
-1. 从 [Releases](https://github.com/MayRain-Meow/NAI-Pocket/releases/tag/v0.7.0-preview) 下载 APK 安装。
-2. 打开设置添加账号：NovelAI 官方 Token，或在「管理第三方中转」里添加中转。
-3. 想找画师：在「设置 → 画师标注资料」下载资料包，在「设置 → 画风数据」下载画风数据（想直接对比 V5 画风，再下载「V5 例图」），然后打开「画师」页。
-4. 写好 Prompt，点生成。
+<img src="docs/endfield/crying-cat.jpg" alt="时间和 token 账单一起长大的哭哭猫" width="220">
 
-有新版本时，应用会自己提示更新。
+画廊的灵感也要感谢 [Aaalice233 / ComfyUI-Aaalice-Nodes](https://github.com/Aaalice233/ComfyUI-Aaalice-Nodes)。
+这是我以前玩 ComfyUI 时找到的大佬项目，工作流和插件都很好用！
+现在我主要玩 NovelAI，实在是“轮椅生图”太方便了 (￣▽￣)／，所以也想把这种看图、挑标签的便利带到手机里。
 
-## 常见问题
+这个仓库先供喜欢这套风格的人使用，相关修改已提交给原项目的 [PR #3](https://github.com/MayRain-Meow/NAI-Pocket/pull/3)。
+作者最近忙，方便的时候再看就好，不催合并，也不把采纳当成理所当然。
+如果后续原项目采纳了适合的改进，建议大家优先使用原项目。
+这边会按自己的使用情况尽力维护，但不保证长期同步；也可能哪天又忍不住继续折腾 (´･ω･`)。
 
-**要花钱吗？** 应用免费开源，生成用的是你自己账号的额度。
+## Yukino（Codex）的开发札记
 
-**隐私呢？** Token 加密保存在手机上，图库和方案也都在本机；生成请求直接发往你选择的渠道，应用本身不设服务器。以图找画师只在手机上运行，图片不上传。
+这一轮最有价值的输入，是唐璜实际使用后不断给出的具体反馈：
+按钮只露一角、想同时移动几个标签、删掉的图也需要先看清楚——这些细节让改动有了明确目标。
+我的工作是把这些反馈转成实现，并用自动化检查尽量减少回归。
+测试能覆盖很多已知路径，真实手机上的体验仍需要大家继续帮忙检验。
+感谢原作者把完整项目开源，也感谢提供灵感的插件作者；希望这些改动能让日常操作少一点折腾。
 
-**例图从哪来？** 资料包只含 Danbooru 上全年龄原作的链接，例图打开时从 Danbooru 读取；版权归原作者所有。V5 例图是用 NovelAI V5 Full 生成的图，每张都附生成参数。
+## 来源、致谢与边界
 
-**遇到问题？** 欢迎提 [Issue](https://github.com/MayRain-Meow/NAI-Pocket/issues)。
+- 原项目：[MayRain-Meow / NAI-Pocket](https://github.com/MayRain-Meow/NAI-Pocket)，本版基于 0.7.10 快照 `25a14d731b4772f5ca49dee11e99f5465a66bcd6` 修改。原作者、许可证和既有第三方署名保留。
+- 画廊交互和模块划分参考 [Aaalice233 / ComfyUI-Aaalice-Nodes](https://github.com/Aaalice233/ComfyUI-Aaalice-Nodes) 的 BooruGalleryNode，调研快照 `2395128e6f02d60ccc4c2b514201533cd8fd3f92`。按 NAI Pocket 原生网络与编辑器重新实现，未直接并入其 Python 或前端模块。详见 [DANBOORU.md](DANBOORU.md)。
+- Danbooru 图片版权归各自作者；站点访问规则和账号权限照常适用。原有服务与字体署名见 [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md)。
+- 本版是独立修改版，不是原作者的官方发布，也不代表作者认可全部设计。继续遵循仓库的 [AGPL-3.0-only 许可证](LICENSE)。
 
-## 开发者
+## 验证与已知限制
 
-构建、源码结构与测试见 [BUILD.md](BUILD.md)；手机调试见 [体验与调试说明](app/docs/REVIEW.public.md)；资料包格式见 [资料包说明](app/docs/ARTIST-PACK.public.md)。
+已完成项目测试、队列与 HTTP 测试、原生媒体路由检查、普通／Endfield 构建、
+真实浏览器页面与隔离 SQLite 的回归测试、新增画廊测试，以及 Android 编译、签名与包内资源核验。
+覆盖四套主题、手机／桌面和短窗口、取消与过期响应、导入与撤销、账号隔离及下载位置。
+匿名 Danbooru 搜索和排行榜接口已做只读连通性检查。
 
-## 致谢
+本次没有调用付费生成；预览中的图片是合成测试图。
+电脑上的检查不等于所有 Android 设备都验收通过；实际覆盖安装、系统文件夹权限、
+真实账号权限及手机网络环境仍可能存在差异。详细结果随发布附件提供。
 
-- **[DanbooruSearch](https://huggingface.co/spaces/SAkizuki/DanbooruSearch)**（SAkizuki）：用中文或一句描述就能搜到 Danbooru Tag，编辑器里的语义搜索由它提供。同一位作者的 **[问秋月](https://huggingface.co/spaces/SAkizuki/WenQiuYue)** 可以问写法，也能让 Agent 帮你把想法写成提示词。
-- **[法典 · QuickTagCloud](https://novelai.quicktagcloud.com/)** 以及各部法典的整理者与投稿者：「法典」页读取的就是这些社区配方，条目保留原作者署名。
+## 开发资料
 
-## 许可
-
-[AGPL-3.0-only](LICENSE) 开源。本项目与 NovelAI 官方无隶属关系；第三方服务与数据的署名见 [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md)。
+[EXPERIENCE.md](EXPERIENCE.md) 说明独立版构建与兼容边界；
+[DANBOORU.md](DANBOORU.md) 说明画廊接口、导入和设置；
+[BUILD.md](BUILD.md) 保留项目构建资料；
+[README.upstream.md](README.upstream.md) 保留基础版本的原始项目介绍。
