@@ -2,21 +2,35 @@
 
 基于 [MayRain-Meow / NAI-Pocket](https://github.com/MayRain-Meow/NAI-Pocket) 的独立修改版：Endfield 风格、日常交互修复，以及能把标签导入指定分区的 Danbooru 画廊。
 
-**[下载 0.7.10-endfield.5 安装包与完整源码](https://github.com/tanghuang-meow/NAI-Pocket/releases/tag/0.7.10-endfield.5)** · [原项目](https://github.com/MayRain-Meow/NAI-Pocket) · [上游 PR #3](https://github.com/MayRain-Meow/NAI-Pocket/pull/3) · [安装与构建](EXPERIENCE.md) · [画廊使用说明](DANBOORU.md)
+**[下载 0.7.10-endfield.6 安装包与完整源码](https://github.com/tanghuang-meow/NAI-Pocket-Endfield/releases/tag/0.7.10-endfield.6)** · [原项目](https://github.com/MayRain-Meow/NAI-Pocket) · [上游 PR #3](https://github.com/MayRain-Meow/NAI-Pocket/pull/3) · [安装与构建](EXPERIENCE.md) · [画廊使用说明](DANBOORU.md)
 
 > 此仓库是个人分支，不是官方发布。上游作者尚未合并本 PR；喜欢原版或需要原项目后续更新，请优先关注原项目。
 
 ![画廊与标签导入预览，图片为合成测试图](docs/endfield/gallery-preview.png)
 
+## 功能图解
+
+[查看完整功能示例图集](docs/endfield/FEATURES.md)：四套配色、画廊搜索与指定分区导入、标签多选、回收站预览、图片缩放，以及下载偏好。
+
+![四套 Endfield 配色](docs/endfield/themes-overview.jpg)
+
+> 示例来自应用界面的隔离演示／回归环境；图片和账号是合成测试数据，不包含个人图库或真实凭据。
+
 ## 安装
 
-版本 **0.7.10-endfield.5**，versionCode **37**。Android 7.0 及以上 ARM 手机。
-从本仓库 Releases 下载 `NAI-Pocket-0.7.10-endfield.5.apk`。
+版本 **0.7.10-endfield.6**，versionCode **38**。Android 7.0 及以上 ARM 手机。
+从本仓库 Releases 下载 `NAI-Pocket-0.7.10-endfield.6.apk`。
 
 - 已装此前 Endfield 独立版：直接覆盖安装，**不要先卸载**；包名和签名沿用。
 - 已装作者原版：可以并存，独立版使用自己的数据目录；不会自动迁移原版账号或图库。
 - 当前独立包统一使用 Endfield 主题；原作者界面保留在普通构建中。
 - 独立版关闭原项目的自动更新检查，请在本仓库查看新版本。
+
+## .6 小更新
+
+- 项目地址统一为 `tanghuang-meow/NAI-Pocket-Endfield`，应用显示名为 **NAI Pocket Endfield**。
+- 设置 → ENDFIELD 新增「项目主页」「下载与更新」。个人仓库入口只属于 `endfield-release` 发布分支，不加入上游 PR 的代码。
+- 补充功能示例图集；沿用 .5 的功能、包名、图标和签名，可以直接覆盖升级。
 
 ## 相对原版改了什么
 
