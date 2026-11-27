@@ -245,3 +245,14 @@ body.native-booting::after { background:var(--ef-paper); color:var(--ef-ink); fo
   .trash-image-dialog .dialog-actions button { flex:1 1 100px; }
 }
 @media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none!important; transition:none!important; scroll-behavior:auto!important; } }
+
+
+/* Personal release: project and update destinations in Settings → ENDFIELD. */
+.native-endfield-project-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.native-endfield-project-link {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 44px; padding: 9px 16px; border: 1px solid var(--line);
+  background: var(--panel); color: var(--text); font-weight: 650; text-decoration: none;
+}
+.native-endfield-project-link:hover { border-color: var(--accent); }
+.native-endfield-project-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
