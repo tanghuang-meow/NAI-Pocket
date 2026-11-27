@@ -263,8 +263,20 @@ try {
   const updateSection = experience ? document.createElement('section') : appUpdateSection({ updater: createUpdater({ fetch: http.fetch, state: queue.state, currentVersion: appVersion }),
     native: registerPlugin('AppUpdate'), currentVersion: appVersion });
   if (experience) {
-    updateSection.className = 'settings-dialog-section';
-    updateSection.innerHTML = `<div class="settings-section-heading"><span class="workspace-eyebrow">// ENDFIELD</span><h2>Endfield 独立版</h2></div><p class="hint">版本 ${appVersion}-endfield.5，基于 NAI Pocket ${appVersion}。此为独立修改版，并非原作者的官方发布。不接收原版自动更新；源码与修改说明随安装包提供。</p>`;
+    updateSection.className = 'settings-dialog-section native-endfield-project';
+    updateSection.innerHTML = `<div class="settings-section-heading"><span class="workspace-eyebrow">// ENDFIELD</span><h2>NAI Pocket Endfield</h2></div><p class="hint">版本 ${appVersion}-endfield.6，基于 NAI Pocket ${appVersion}。此为独立修改版，并非原作者的官方发布。不接收原版自动更新；请在个人仓库查看源码、修改说明与新版安装包。</p>`;
+    // Personal release branch only; upstream attribution stays in the About section.
+    const repository = 'https://github.com/tanghuang-meow/NAI-Pocket-Endfield';
+    const owner = document.createElement('p'); owner.className = 'hint';
+    owner.textContent = '唐璜的个人分支 · tanghuang-meow / NAI-Pocket-Endfield';
+    const actions = document.createElement('div'); actions.className = 'native-endfield-project-actions';
+    for (const [label, href] of [['项目主页 ↗', repository], ['下载与更新 ↗', `${repository}/releases`]]) {
+      const link = document.createElement('a');
+      link.className = 'native-endfield-project-link'; link.textContent = label;
+      link.href = href; link.target = '_blank'; link.rel = 'noopener noreferrer';
+      actions.append(link);
+    }
+    updateSection.append(owner, actions);
   }
   settingsBody?.append(downloadSettingsSection({ native: PocketNative, notice, experience: typeof __POCKET_EXPERIENCE__ !== 'undefined' && __POCKET_EXPERIENCE__ }),
     await phoneAlbumSection(queue), storageSection({ request, notice }), resourcesSection, exampleImagesSection({ request, catalogUrl: V5_EXAMPLES_CATALOG_URL, notice }), styleSection, styleModelSection({ request, notice }), updateSection, aboutSection(appVersion, licenseButton));
