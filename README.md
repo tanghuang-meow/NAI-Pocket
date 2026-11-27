@@ -1,4 +1,9 @@
-# NAI Pocket Endfield
+# NAI Pocket Contributions
+
+> **此处是贡献用 fork。** 用于维护向 [MayRain-Meow / NAI-Pocket](https://github.com/MayRain-Meow/NAI-Pocket) 提交的 [PR #3](https://github.com/MayRain-Meow/NAI-Pocket/pull/3)。
+> 下载和使用 Endfield 独立版，请前往 **[NAI-Pocket-Endfield](https://github.com/tanghuang-meow/NAI-Pocket-Endfield)**。以下保留此前版本的完整介绍；此分支的发布说明不改变 PR 使用的 `endfield-ui-gallery` 分支。
+
+## Endfield 版本介绍
 
 基于 [MayRain-Meow / NAI-Pocket](https://github.com/MayRain-Meow/NAI-Pocket) 的独立修改版：Endfield 风格、日常交互修复，以及能把标签导入指定分区的 Danbooru 画廊。
 
@@ -19,7 +24,7 @@
 ## 安装
 
 版本 **0.7.10-endfield.6**，versionCode **38**。Android 7.0 及以上 ARM 手机。
-从本仓库 Releases 下载 `NAI-Pocket-0.7.10-endfield.6.apk`。
+从本仓库 Releases 下载 `NAI-Pocket-Endfield-0.7.10-endfield.6.apk`。
 
 - 已装此前 Endfield 独立版：直接覆盖安装，**不要先卸载**；包名和签名沿用。
 - 已装作者原版：可以并存，独立版使用自己的数据目录；不会自动迁移原版账号或图库。
